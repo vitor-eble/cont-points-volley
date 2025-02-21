@@ -65,6 +65,13 @@ export class AppComponent {
     this.pointsTeamRed = 0
   }
 
+  resetGame(){
+    this.pointsTeamRed = 0;
+    this.setsTeamRed = 0;
+    this.pointsTeamBlue = 0;
+    this.setsTeamBlue = 0;
+  }
+
   fullScreen(){
     if(!document.fullscreenElement){
       document.documentElement.requestFullscreen();
