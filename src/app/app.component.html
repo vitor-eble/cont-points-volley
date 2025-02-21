@@ -6,7 +6,7 @@
 
 <div class="h-dvh bg-zinc-100 w-full mb-52">
 
-  <div class="flex w-full items-center py-3 mb-1 pr-5 pl-5">
+  <div class="flex w-full items-center py-3 pr-5 pl-5">
     <h1 class="w-full flex justify-center text-2xl">
       Contador De Pontos
     </h1>
@@ -16,42 +16,45 @@
       </svg>
     </button>
   </div>
-  <div class="w-full px-3 flex gap-5 h-full">
-    <div class="w-full h-full flex flex-col gap-3">
-      <button class="w-full h-2/3 bg-red-500 shadow-lg rounded-lg flex justify-center items-center text-white active:scale-95 transition-all duration-150 relative" (click)="incrementPoints('teamRed')">
-        {{ pointsTeamRed }}
-        <div *ngIf="winner === 'teamRed'" class="winner">Time vermelho venceu</div>
-      </button>
-      <div class="flex gap-2 w-full items-center justify-between">
-        <h3 class="pl-2 text-lg w-1/2 border-2 border-solid border-zinc-500 rounded-lg shadow-lg py-3 flex gap-3">
-          <span class="w-3/4">Sets ganhos:</span>
-          <span class="w-1/4">{{ setsTeamRed}}</span>
-        </h3>
-        <button class="w-1/2 bg-zinc-500 py-3 rounded-lg shadow-lg active:scale-95 active:bg-zinc-600 transition-all duration-150 text-white border-2 border-solid border-zinc-500 active:border-zinc-600 text-lg" (click)="backPoint('teamRed')">
-          Voltar ponto
+  <div class="w-full px-3 flex flex-col h-full">
+    <div class="flex gap-5 h-full">
+      <div class="w-full h-full flex flex-col gap-3">
+        <button class="w-full h-2/3 bg-red-500 shadow-lg rounded-lg flex justify-center items-center text-white active:scale-95 transition-all duration-150 relative" (click)="incrementPoints('teamRed')">
+          {{ pointsTeamRed }}
+          <div *ngIf="winner === 'teamRed'" class="winner">Time vermelho venceu</div>
         </button>
+        <div class="flex gap-2 w-full items-center justify-between">
+          <h3 class="pl-2 text-lg w-1/2 border-2 border-solid border-zinc-500 rounded-lg shadow-lg py-3 flex gap-3">
+            <span class="w-3/4">Sets ganhos:</span>
+            <span class="w-1/4">{{ setsTeamRed}}</span>
+          </h3>
+          <button class="w-1/2 bg-zinc-500 py-3 rounded-lg shadow-lg active:scale-95 active:bg-zinc-600 transition-all duration-150 text-white border-2 border-solid border-zinc-500 active:border-zinc-600 text-lg" (click)="backPoint('teamRed')">
+            Voltar ponto
+          </button>
+        </div>
+      </div>
+      <div class="w-full h-full flex flex-col gap-3">
+        <button class="w-full bg-blue-600 h-2/3 shadow-lg rounded-lg flex justify-center items-center text-white active:scale-95 transition-all duration-150 relative"
+        (click)="incrementPoints('teamBlue')">
+          {{ pointsTeamBlue }}
+          <div *ngIf="winner === 'teamBlue'" class="winner">Time azul venceu</div>
+        </button>
+        <div class="flex gap-2 w-full items-center justify-between">
+          <h3 class="pl-2 text-lg w-1/2 border-2 border-solid border-zinc-500 rounded-lg shadow-lg py-3 flex gap-3">
+            <span class="w-3/4">Sets ganhos:</span>
+            <span class="w-1/4">{{ setsTeamBlue}}</span>
+          </h3>
+          <button class="w-1/2 bg-zinc-500 py-3 rounded-lg shadow-lg active:scale-95 active:bg-zinc-600 transition-all duration-150 text-white border-2 border-solid border-zinc-500 active:border-zinc-600 text-lg" (click)="backPoint('teamBlue')">
+            Voltar ponto
+          </button>
+        </div>
       </div>
     </div>
-    <div class="w-full h-full flex flex-col gap-3">
-      <button class="w-full bg-blue-600 h-2/3 shadow-lg rounded-lg flex justify-center items-center text-white active:scale-95 transition-all duration-150 relative"
-      (click)="incrementPoints('teamBlue')">
-        {{ pointsTeamBlue }}
-        <div *ngIf="winner === 'teamBlue'" class="winner">Time azul venceu</div>
+    <div class="w-full">
+      <button class="w-full  bg-zinc-500 py-3 rounded-lg shadow-lg active:scale-95 active:bg-zinc-600 transition-all duration-150 text-white border-2 border-solid border-zinc-500 active:border-zinc-600 text-lg" (click)="resetGame()">
+        Resetar Jogo
       </button>
-      <div class="flex gap-2 w-full items-center justify-between">
-        <h3 class="pl-2 text-lg w-1/2 border-2 border-solid border-zinc-500 rounded-lg shadow-lg py-3 flex gap-3">
-          <span class="w-3/4">Sets ganhos:</span>
-          <span class="w-1/4">{{ setsTeamBlue}}</span>
-        </h3>
-        <button class="w-1/2 bg-zinc-500 py-3 rounded-lg shadow-lg active:scale-95 active:bg-zinc-600 transition-all duration-150 text-white border-2 border-solid border-zinc-500 active:border-zinc-600 text-lg" (click)="backPoint('teamBlue')">
-          Voltar ponto
-        </button>
-      </div>
     </div>
   </div>
-  <div class="w-full px-3">
-    <button class="w-full  bg-zinc-500 py-3 rounded-lg shadow-lg active:scale-95 active:bg-zinc-600 transition-all duration-150 text-white border-2 border-solid border-zinc-500 active:border-zinc-600 text-lg" (click)="resetGame()">
-      Resetar Jogo
-    </button>
-  </div>
+
 </div>
