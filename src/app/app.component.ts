@@ -8,4 +8,23 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'cont-points-volley';
+
+  pointsTeamRed = 0;
+  setsTeamRed = 0;
+  pointsTeamBlue = 0;
+  setsTeamBlue = 0;
+
+  contPoints(team: string){
+    console.log('botao clicado');
+    console.log(team);
+
+    if(team === 'teamBlue'){
+      this.pointsTeamBlue++
+    }
+    if(team === 'teamRed'){
+      this.pointsTeamRed++
+    }
+
+  }
+
 }
