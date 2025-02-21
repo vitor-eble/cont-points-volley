@@ -18,11 +18,11 @@ export class AppComponent {
     this.checkGuidance()
   }
 
-  @HostListener('window:resize')
+  @HostListener('window:resize') // escuta a mudança do tamanho de tela
   checkGuidance(){
-    const width = window.innerWidth;
-    const height = window.innerHeight;
-    this.showWarning = height > width
+    const width = window.innerWidth; // pega a largura total do dispositivo
+    const height = window.innerHeight; // pega a altura total do dispositivo
+    this.showWarning = height > width // caso a altura seja maior que a largura, o ShowWarning fica true e o aviso sera mostrado
   }
 
   contPoints(team: string){
@@ -36,6 +36,14 @@ export class AppComponent {
       this.pointsTeamRed++
     }
 
+  }
+
+  fullScreen(){
+    if(!document.fullscreenElement){
+      document.documentElement.requestFullscreen();
+    } else {
+      document.exitFullscreen();
+    }
   }
 
 }
