@@ -19,27 +19,34 @@ export class AppComponent {
     this.checkGuidance()
   }
 
-  @HostListener('window:resize') // escuta a mudança do tamanho de tela
+  @HostListener('window:resize')
   checkGuidance(){
-    const width = window.innerWidth; // pega a largura total do dispositivo
-    const height = window.innerHeight; // pega a altura total do dispositivo
-    this.showWarning = height > width // caso a altura seja maior que a largura, o ShowWarning fica true e o aviso sera mostrado
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    this.showWarning = height > width
   }
 
-  contPoints(team: string){
-    console.log('botao clicado');
-    console.log(team);
-
-    if(team === 'teamBlue'){
-      this.pointsTeamBlue++
-    }
+  incrementPoints(team: string){
     if(team === 'teamRed'){
       this.pointsTeamRed++
     }
-    this.contSets();
+    if(team === 'teamBlue'){
+      this.pointsTeamBlue++
+    }
+    this.verificationSets();
   }
 
-  contSets(){
+  backPoint(team: string){
+    if(team === 'teamRed' && this.pointsTeamRed > 0){
+      this.pointsTeamRed--;
+    }
+    if(team === 'teamBlue' && this.pointsTeamBlue > 0){
+      this.pointsTeamBlue--
+    }
+  }
+
+
+  verificationSets(){
     if (this.pointsTeamRed >= 25 && (this.pointsTeamRed - this.pointsTeamBlue) >= 2){
       this.setsTeamRed++;
       this.winner = 'teamRed'
