@@ -11,8 +11,9 @@ export class AppComponent {
   setsTeamRed = 0;
   pointsTeamBlue = 0;
   setsTeamBlue = 0;
+  showWarning: boolean = false;
+  winner: 'teamRed' | 'teamBlue' | null = null;
 
-  showWarning: boolean = false
 
   constructor(){
     this.checkGuidance()
@@ -35,7 +36,26 @@ export class AppComponent {
     if(team === 'teamRed'){
       this.pointsTeamRed++
     }
+    this.contSets();
+  }
 
+  contSets(){
+    if (this.pointsTeamRed >= 25 && (this.pointsTeamRed - this.pointsTeamBlue) >= 2){
+      this.setsTeamRed++;
+      this.winner = 'teamRed'
+      this.resetPoints();
+      this.showMessage()
+    }  if (this.pointsTeamBlue >= 25 && (this.pointsTeamBlue - this.pointsTeamRed) >= 2){
+      this.setsTeamBlue++;
+      this.winner = 'teamBlue';
+      this.resetPoints();
+      this.showMessage()
+    }
+  }
+
+  resetPoints(){
+    this.pointsTeamBlue = 0;
+    this.pointsTeamRed = 0
   }
 
   fullScreen(){
@@ -46,4 +66,9 @@ export class AppComponent {
     }
   }
 
+  showMessage(){
+    setTimeout(() => {
+      this.winner = null;
+    }, 3000)
+  }
 }
