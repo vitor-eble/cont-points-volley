@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,12 +7,23 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'cont-points-volley';
-
   pointsTeamRed = 0;
   setsTeamRed = 0;
   pointsTeamBlue = 0;
   setsTeamBlue = 0;
+
+  showWarning: boolean = false
+
+  constructor(){
+    this.checkGuidance()
+  }
+
+  @HostListener('window:resize')
+  checkGuidance(){
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    this.showWarning = height > width
+  }
 
   contPoints(team: string){
     console.log('botao clicado');
