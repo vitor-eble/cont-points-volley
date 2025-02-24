@@ -71,12 +71,14 @@ export class AppComponent {
   }
 
   @HostListener('window:orientationchange', ['$event'])
+
+
   onOrientationChange() {
     this.checkOrientation();
   }
 
   checkOrientation() {
-    if(window.innerWidth > window.innerHeight) {
+    if(window.innerWidth> window.innerHeight) {
       this.fullscreenService.enterFullScreen();
     }
   }
