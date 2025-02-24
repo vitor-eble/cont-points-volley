@@ -1,60 +1,85 @@
 <div *ngIf="showWarning"
-    class="fixed top-0 left-0 z-50 bg-white w-full h-dvh flex flex-col justify-center items-center text-xl font-medium">
+    class="fixed top-0 left-0 z-50 flex flex-col items-center justify-center w-full text-xl font-medium bg-white h-dvh">
   <span>Por favor</span>
   <span>gire seu dispositivo na horizontal</span>
 </div>
 
-<div class="h-dvh bg-zinc-100 w-full mb-52">
+<!-- <div class="w-full h-dvh bg-zinc-100 mb-52">
 
-  <div class="flex w-full items-center py-3 pr-5 pl-5">
-    <h1 class="w-full flex justify-center text-2xl">
+  <div class="flex items-center w-full py-3 pl-5 pr-5">
+    <h1 class="flex justify-center w-full text-2xl">
       Contador De Pontos
     </h1>
-    <button class="w-12 h-12 flex justify-center items-center border-2 border-solid border-zinc-300 shadow-md rounded-2xl" (click)="fullScreen()">
+    <button class="flex items-center justify-center w-12 h-12 border-2 border-solid shadow-md border-zinc-300 rounded-2xl" (click)="fullScreen()" title="Tela cheia" aria-label="Ativar tela cheia">
       <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000">
         <path d="M120-120v-200h80v120h120v80H120Zm520 0v-80h120v-120h80v200H640ZM120-640v-200h200v80H200v120h-80Zm640 0v-120H640v-80h200v200h-80Z"/>
       </svg>
     </button>
   </div>
-  <div class="w-full px-3 flex flex-col h-full">
-    <div class="flex gap-5 h-full">
-      <div class="w-full h-full flex flex-col gap-3">
-        <button class="w-full h-2/3 bg-red-500 shadow-lg rounded-lg flex justify-center items-center text-white active:scale-95 transition-all duration-150 relative" (click)="incrementPoints('teamRed')">
+  <div class="flex flex-col w-full h-full">
+    <div class="flex h-full gap-5">
+      <div class="flex flex-col w-full h-full gap-3">
+        <button class="relative flex items-center justify-center w-full text-white transition-all duration-150 bg-red-500 h-2/3 active:scale-95" (click)="incrementPoints('teamRed')">
           {{ pointsTeamRed }}
           <div *ngIf="winner === 'teamRed'" class="winner">Time vermelho venceu</div>
         </button>
-        <div class="flex gap-2 w-full items-center justify-between">
-          <h3 class="pl-2 text-lg w-1/2 border-2 border-solid border-zinc-500 rounded-lg shadow-lg py-3 flex gap-3">
+        <div class="flex items-center justify-between w-full gap-2">
+          <h3 class="flex w-1/2 gap-3 py-3 pl-2 text-lg border-2 border-solid rounded-lg shadow-lg border-zinc-500">
             <span class="w-3/4">Sets ganhos:</span>
             <span class="w-1/4">{{ setsTeamRed}}</span>
           </h3>
-          <button class="w-1/2 bg-zinc-500 py-3 rounded-lg shadow-lg active:scale-95 active:bg-zinc-600 transition-all duration-150 text-white border-2 border-solid border-zinc-500 active:border-zinc-600 text-lg" (click)="backPoint('teamRed')">
+          <button class="w-1/2 py-3 text-lg text-white transition-all duration-150 border-2 border-solid rounded-lg shadow-lg bg-zinc-500 active:scale-95 active:bg-zinc-600 border-zinc-500 active:border-zinc-600" (click)="backPoint('teamRed')">
             Voltar ponto
           </button>
         </div>
       </div>
-      <div class="w-full h-full flex flex-col gap-3">
-        <button class="w-full bg-blue-600 h-2/3 shadow-lg rounded-lg flex justify-center items-center text-white active:scale-95 transition-all duration-150 relative"
+      <div class="flex flex-col w-full h-full gap-3">
+        <button class="relative flex items-center justify-center w-full text-white transition-all duration-150 bg-blue-600 rounded-lg shadow-lg h-2/3 active:scale-95"
         (click)="incrementPoints('teamBlue')">
           {{ pointsTeamBlue }}
           <div *ngIf="winner === 'teamBlue'" class="winner">Time azul venceu</div>
         </button>
-        <div class="flex gap-2 w-full items-center justify-between">
-          <h3 class="pl-2 text-lg w-1/2 border-2 border-solid border-zinc-500 rounded-lg shadow-lg py-3 flex gap-3">
+        <div class="flex items-center justify-between w-full gap-2">
+          <h3 class="flex w-1/2 gap-3 py-3 pl-2 text-lg border-2 border-solid rounded-lg shadow-lg border-zinc-500">
             <span class="w-3/4">Sets ganhos:</span>
             <span class="w-1/4">{{ setsTeamBlue}}</span>
           </h3>
-          <button class="w-1/2 bg-zinc-500 py-3 rounded-lg shadow-lg active:scale-95 active:bg-zinc-600 transition-all duration-150 text-white border-2 border-solid border-zinc-500 active:border-zinc-600 text-lg" (click)="backPoint('teamBlue')">
+          <button class="w-1/2 py-3 text-lg text-white transition-all duration-150 border-2 border-solid rounded-lg shadow-lg bg-zinc-500 active:scale-95 active:bg-zinc-600 border-zinc-500 active:border-zinc-600" (click)="backPoint('teamBlue')">
             Voltar ponto
           </button>
         </div>
       </div>
     </div>
     <div class="w-full">
-      <button class="w-full  bg-zinc-500 py-3 rounded-lg shadow-lg active:scale-95 active:bg-zinc-600 transition-all duration-150 text-white border-2 border-solid border-zinc-500 active:border-zinc-600 text-lg" (click)="resetGame()">
+      <button class="w-full py-3 text-lg text-white transition-all duration-150 border-2 border-solid rounded-lg shadow-lg bg-zinc-500 active:scale-95 active:bg-zinc-600 border-zinc-500 active:border-zinc-600" (click)="resetGame()">
         Resetar Jogo
       </button>
     </div>
   </div>
 
-</div>
+</div> -->
+
+<main class="relative w-full h-full">
+  <div class="absolute z-10 flex flex-col items-center justify-center gap-3 -translate-x-1/2 left-1/2">
+    <app-timer></app-timer>
+    <app-sets></app-sets>
+  </div>
+
+  <div class="grid w-full h-full grid-cols-2 gap-1">
+    <div class="relative flex flex-col items-center justify-center w-full h-full transition-all duration-100 bg-red-700"
+    (click)="incrementPoints('teamRed')">
+      <h1 class="text-white text-8xl">
+        {{ pointsTeamRed }}
+      </h1>
+      <div *ngIf="winner === 'teamRed'" class="winner">Time vermelho venceu</div>
+    </div>
+
+    <div class="relative flex flex-col items-center justify-center w-full h-full bg-blue-700"
+    (click)="incrementPoints('teamBlue')">
+      <h1 class="text-white text-8xl">
+        {{ pointsTeamBlue }}
+      </h1>
+      <div *ngIf="winner === 'teamBlue'" class="winner">Time azul venceu</div>
+    </div>
+  </div>
+</main>

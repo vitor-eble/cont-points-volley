@@ -1,5 +1,7 @@
 import { Component, HostListener } from '@angular/core';
 
+import { CounterSetsService } from './services/counter-sets.service';
+import { CounterPointsService } from './services/counter-points.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,16 +9,14 @@ import { Component, HostListener } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  pointsTeamRed = 0;
-  setsTeamRed = 0;
-  pointsTeamBlue = 0;
-  setsTeamBlue = 0;
   showWarning: boolean = false;
   winner: 'teamRed' | 'teamBlue' | null = null;
 
-  constructor() {
+  constructor(
+    private counterSetsService: CounterSetsService,
+    private counterPointsService: CounterPointsService
+  ) {
     this.checkGuidance();
-    this.loadGame();
   }
 
   @HostListener('window:resize')
@@ -26,63 +26,37 @@ export class AppComponent {
     this.showWarning = height > width;
   }
 
-  @HostListener('window:beforeunload', ['$event'])
-  resetOnClose(event: Event) {
-    if(!navigator.userActivation?.isActive){
-      localStorage.removeItem('gameData')
-    }
+  get pointsTeamRed() {
+    return this.counterPointsService.getPoints('teamRed');
+  }
+  get pointsTeamBlue() {
+    return this.counterPointsService.getPoints('teamBlue');
   }
 
-  incrementPoints(team: string) {
-    if (team === 'teamRed') {
-      this.pointsTeamRed++;
-    }
-    if (team === 'teamBlue') {
-      this.pointsTeamBlue++;
-    }
+  incrementPoints(team: 'teamRed' | 'teamBlue') {
+    this.counterPointsService.addPoint(team);
     this.verificationSets();
-    this.saveGame();
-  }
-
-  backPoint(team: string) {
-    if (team === 'teamRed' && this.pointsTeamRed > 0) {
-      this.pointsTeamRed--;
-    }
-    if (team === 'teamBlue' && this.pointsTeamBlue > 0) {
-      this.pointsTeamBlue--;
-    }
-    this.saveGame();
   }
 
   verificationSets() {
     if (this.pointsTeamRed >= 25 && (this.pointsTeamRed - this.pointsTeamBlue) >= 2) {
-      this.setsTeamRed++;
+      this.counterSetsService.addSet('teamRed');
       this.winner = 'teamRed';
-      this.resetPoints();
       this.showMessage();
+      this.resetPoints
     }
     if (this.pointsTeamBlue >= 25 && (this.pointsTeamBlue - this.pointsTeamRed) >= 2) {
-      this.setsTeamBlue++;
+      this.counterSetsService.addSet('teamBlue');
       this.winner = 'teamBlue';
-      this.resetPoints();
       this.showMessage();
+      this.resetPoints()
     }
-    this.saveGame();
   }
 
   resetPoints() {
-    this.pointsTeamBlue = 0;
-    this.pointsTeamRed = 0;
-    this.saveGame();
+    this.counterPointsService.resetPoints();
   }
 
-  resetGame() {
-    this.pointsTeamRed = 0;
-    this.setsTeamRed = 0;
-    this.pointsTeamBlue = 0;
-    this.setsTeamBlue = 0;
-    localStorage.removeItem('gameData'); // 🔹 Limpa o LocalStorage para começar do zero
-  }
 
   fullScreen() {
     if (!document.fullscreenElement) {
@@ -98,24 +72,4 @@ export class AppComponent {
     }, 3000);
   }
 
-  saveGame() {
-    const gameData = {
-      pointsTeamRed: this.pointsTeamRed,
-      setsTeamRed: this.setsTeamRed,
-      pointsTeamBlue: this.pointsTeamBlue,
-      setsTeamBlue: this.setsTeamBlue
-    };
-    localStorage.setItem('gameData', JSON.stringify(gameData));
-  }
-
-  loadGame() {
-    const savedGame = localStorage.getItem('gameData');
-    if (savedGame) {
-      const gameData = JSON.parse(savedGame);
-      this.pointsTeamRed = gameData.pointsTeamRed ?? 0;
-      this.setsTeamRed = gameData.setsTeamRed ?? 0;
-      this.pointsTeamBlue = gameData.pointsTeamBlue ?? 0;
-      this.setsTeamBlue = gameData.setsTeamBlue ?? 0;
-    }
-  }
 }
