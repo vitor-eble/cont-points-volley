@@ -59,14 +59,14 @@
 
 </div> -->
 
-<main class="relative w-full h-full">
+<main class="relative w-full h-dvh">
   <div class="absolute z-10 flex flex-col items-center justify-center gap-3 -translate-x-1/2 left-1/2">
     <app-timer></app-timer>
     <app-sets></app-sets>
   </div>
 
   <div class="grid w-full h-full grid-cols-2 gap-1">
-    <div class="relative flex flex-col items-center justify-center w-full h-full transition-all duration-100 bg-red-700"
+    <div class="relative flex flex-col items-center justify-center w-full h-full transition-all duration-100 bg-red-600"
     (click)="incrementPoints('teamRed')">
       <h1 class="text-white text-8xl">
         {{ pointsTeamRed }}
@@ -74,7 +74,7 @@
       <div *ngIf="winner === 'teamRed'" class="winner">Time vermelho venceu</div>
     </div>
 
-    <div class="relative flex flex-col items-center justify-center w-full h-full bg-blue-700"
+    <div class="relative flex flex-col items-center justify-center w-full h-full bg-blue-600"
     (click)="incrementPoints('teamBlue')">
       <h1 class="text-white text-8xl">
         {{ pointsTeamBlue }}
