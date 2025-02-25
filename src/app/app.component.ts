@@ -21,7 +21,7 @@ export class AppComponent {
   constructor(
     private counterSetsService: CounterSetsService,
     private counterPointsService: CounterPointsService,
-    private editNameService: EditNameService
+    public editNameService: EditNameService
   ) {
     this.checkGuidance();
   }

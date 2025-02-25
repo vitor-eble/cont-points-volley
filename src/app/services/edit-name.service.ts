@@ -7,13 +7,14 @@ export class EditNameService {
 
   constructor() { }
 
-  editName: boolean = false;
   editNameTeam01: boolean = false;
   editNameTeam02: boolean = false;
 
+  nameTeam01: string = 'time 1';
+  nameTeam02: string = 'time 2';
+
 
   showEditName(team: 'team01' | 'team02') {
-    this.editName = true;
     if(team === 'team01'){
       this.editNameTeam01 = true
     }
@@ -21,4 +22,17 @@ export class EditNameService {
       this.editNameTeam02 = true
     }
   }
+
+  saveName(team: 'team01' | 'team02', name: string){
+    if(team === 'team01'){
+      this.editNameTeam01 = false;
+      this.nameTeam01 = name;
+    }
+    if(team === 'team02'){
+      this.editNameTeam02 = false;
+      this.nameTeam02 = name;
+    }
+
+  }
+
 }
