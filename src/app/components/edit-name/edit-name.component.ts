@@ -21,4 +21,13 @@ export class EditNameComponent {
   get showEditNameTeam02() {
     return this.editNameService.editNameTeam02
   }
+
+  saveName(team: 'team01'| 'team02'){
+    if(team === 'team01'){
+      this.editNameService.editNameTeam01 = false;
+    }
+    if(team === 'team02'){
+      this.editNameService.editNameTeam02 = false;
+    }
+  }
 }

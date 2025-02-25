@@ -1,10 +1,20 @@
-<div class="p-1 bg-white rounded-2xl">
-
-  <div class="flex items-center justify-center p-2 text-white bg-red-600 rounded-2xl" *ngIf="showEditNameTeam01">
-    <input type="text" title="nameTeam01" [(ngModel)]="nameTeam01" class="w-full py-2 text-lg text-center bg-transparent border-2 border-white border-solid rounded-3xl">
+<div class="w-3/4 p-1 bg-white rounded-2xl" *ngIf="showEditNameTeam01">
+  <div class="flex flex-col items-center justify-center gap-3 p-2 text-white bg-red-600 rounded-2xl" >
+    <label for="inputRed" class="relative">
+      <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#fff" class="absolute left-0 bg-red-600 rounded -top-2">
+        <path d="M200-200h57l391-391-57-57-391 391v57Zm-80 80v-170l528-527q12-11 26.5-17t30.5-6q16 0 31 6t26 18l55 56q12 11 17.5 26t5.5 30q0 16-5.5 30.5T817-647L290-120H120Zm640-584-56-56 56 56Zm-141 85-28-29 57 57-29-28Z"/>
+      </svg>
+      <input type="text" title="nameTeam01" id="inputRed" [(ngModel)]="nameTeam01"
+      class="w-full py-2 text-lg text-center bg-transparent border-2 border-white border-solid shadow-lg rounded-2xl">
+    </label>
+    <button
+    class="w-full py-2 text-lg text-white transition-all duration-150 border-2 border-white border-solid shadow-lg rounded-2xl"
+    (click)="saveName('team01')">
+      Salvar
+    </button>
   </div>
+</div>
 
-  <div class="text-white bg-blue-600 " *ngIf="showEditNameTeam02">
-    asdasdad
-  </div>
+<div class="text-white bg-blue-600 " *ngIf="showEditNameTeam02">
+  asdasdad
 </div>

@@ -27,7 +27,7 @@ export class AppComponent {
   }
 
   get showEditName() {
-    return this.editNameService.editName
+    return this.editNameService.editNameTeam01 || this.editNameService.editNameTeam02;
   }
 
   get pointsTeamRed() {
