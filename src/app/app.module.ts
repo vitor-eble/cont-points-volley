@@ -7,6 +7,7 @@ import { TimerComponent } from './components/timer/timer.component';
 import { SetsComponent } from './components/sets/sets.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CounterPointsService } from './services/counter-points.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+    CounterPointsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

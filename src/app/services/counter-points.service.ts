@@ -7,6 +7,7 @@ export class CounterPointsService {
 
   private pointsTeamRed = 0;
   private pointsTeamBlue = 0;
+  private lastPoint: 'teamRed' | 'teamBlue' | null = null;
 
   constructor() { }
 
@@ -21,6 +22,17 @@ export class CounterPointsService {
     if (team === 'teamBlue') {
       this.pointsTeamBlue++;
     }
+    this.lastPoint = team;
+  }
+
+  backPoint() {
+    if(this.lastPoint === 'teamRed') {
+      this.pointsTeamRed--;
+    }
+    if(this.lastPoint === 'teamBlue') {
+      this.pointsTeamBlue--;
+    }
+    this.lastPoint = null;
   }
 
   resetPoints() {

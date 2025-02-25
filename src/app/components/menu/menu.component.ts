@@ -38,6 +38,10 @@ export class MenuComponent {
     this.isFullScreen = this.fullscreenService.isFullscreen
   }
 
+  backPoint(){
+    this.counterPointsService.backPoint()
+  }
+
   resetGame(){
     this.counterPointsService.resetPoints();
     this.counterSetsService.resetSets();
