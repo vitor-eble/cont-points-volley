@@ -8,6 +8,9 @@ import { SetsComponent } from './components/sets/sets.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CounterPointsService } from './services/counter-points.service';
+import { FormsModule } from '@angular/forms';
+import { EditNameService } from './services/edit-name.service';
+import { EditNameComponent } from './components/edit-name/edit-name.component';
 
 @NgModule({
   declarations: [
@@ -15,14 +18,17 @@ import { CounterPointsService } from './services/counter-points.service';
     TimerComponent,
     SetsComponent,
     MenuComponent,
+    EditNameComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule
   ],
   providers: [
-    CounterPointsService
+    CounterPointsService,
+    EditNameService
   ],
   bootstrap: [AppComponent]
 })

@@ -30,7 +30,7 @@ export class FullscreenService {
     }
   }
 
-  toggleFullscreen(): void {
+  toggleFullscreen() {
     if (this.isFullscreen) {
       this.exitFullscreen();
     } else {
