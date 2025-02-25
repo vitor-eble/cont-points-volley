@@ -22,4 +22,10 @@ export class CounterSetsService {
       this.setsTeamBlue++;
     }
   }
+
+  resetSets() {
+    this.setsTeamRed = 0;
+    this.setsTeamBlue = 0;
+  }
+
 }
